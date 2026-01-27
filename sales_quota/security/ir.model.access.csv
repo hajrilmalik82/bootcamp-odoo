@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_quota_category,quota.category,model_quota_category,base.group_user,1,1,1,1
+access_quota_allocation,quota.allocation,model_quota_allocation,base.group_user,1,1,1,1
+access_quota_allocation_line,quota.allocation.line,model_quota_allocation_line,base.group_user,1,1,1,1
+access_quota_usage_report,quota.usage.report,model_quota_usage_report,base.group_user,1,0,0,0

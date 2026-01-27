@@ -1,0 +1,26 @@
+<odoo>
+
+  <menuitem id="menu_quota_config"
+            name="Quota"
+            parent="sale.menu_sale_config"
+            sequence="50"/>
+
+  <menuitem id="menu_quota_category"
+            name="Quota Category"
+            parent="menu_quota_config"
+            action="action_quota_category"
+            sequence="10"/>
+
+  <menuitem id="menu_quota_allocation"
+            name="Quota Allocation"
+            parent="menu_quota_config"
+            action="action_quota_allocation"
+            sequence="20"/>
+
+  <menuitem id="menu_quota_usage"
+            name="Quota Usage"
+            parent="menu_quota_config"
+            action="action_quota_usage"
+            sequence="30"/>
+
+</odoo>

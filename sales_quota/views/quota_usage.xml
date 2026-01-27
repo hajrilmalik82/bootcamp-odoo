@@ -1,0 +1,46 @@
+<odoo>
+
+  <!-- Pivot View -->
+  <record id="quota_usage_pivot" model="ir.ui.view">
+    <field name="name">quota.usage.pivot</field>
+    <field name="model">quota.usage.report</field>
+    <field name="arch" type="xml">
+      <pivot string="Quota Usage">
+        <field name="quota_category_id" type="row"/>
+        <field name="year" type="col"/>
+        <field name="month" type="col"/>
+        <field name="used_qty" type="measure"/>
+        <field name="remaining_qty" type="measure"/>
+      </pivot>
+    </field>
+  </record>
+
+  <!-- Tree View (opsional) -->
+  <record id="quota_usage_tree" model="ir.ui.view">
+    <field name="name">quota.usage.tree</field>
+    <field name="model">quota.usage.report</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="quota_category_id"/>
+        <field name="year"/>
+        <field name="month"/>
+        <field name="allocated_qty"/>
+        <field name="used_qty"/>
+        <field name="remaining_qty"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Action -->
+  <record id="action_quota_usage" model="ir.actions.act_window">
+    <field name="name">Quota Usage</field>
+    <field name="res_model">quota.usage.report</field>
+    <field name="view_mode">pivot,tree</field>
+  </record>
+
+ <record id="action_quota_usage" model="ir.actions.act_window">
+    <field name="name">Quota Usage</field>
+    <field name="res_model">quota.usage.report</field>
+    <field name="view_mode">pivot</field>
+  </record>
+</odoo>
