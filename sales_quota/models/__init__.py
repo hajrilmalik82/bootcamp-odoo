@@ -4,3 +4,5 @@ from . import quota_allocation
 from . import sale_order
 from . import quota_usage_report
 from . import customer_quota
+from . import quota_deadline
+from . import customer_quota_report

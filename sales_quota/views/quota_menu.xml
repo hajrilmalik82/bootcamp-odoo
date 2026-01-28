@@ -1,26 +1,43 @@
 <odoo>
 
-  <menuitem id="menu_quota_config"
-            name="Quota"
-            parent="sale.menu_sale_config"
-            sequence="50"/>
+  <menuitem id="menu_quota_management"
+            name="Quota Management"
+            parent="sale.sale_menu_root" 
+            sequence="10"/>
 
   <menuitem id="menu_quota_category"
             name="Quota Category"
-            parent="menu_quota_config"
-            action="action_quota_category"
-            sequence="10"/>
+            parent="menu_quota_management"
+            action="action_quota_category" 
+            sequence="20"/>
 
   <menuitem id="menu_quota_allocation"
             name="Quota Allocation"
-            parent="menu_quota_config"
-            action="action_quota_allocation"
-            sequence="20"/>
-
-  <menuitem id="menu_quota_usage"
-            name="Quota Usage"
-            parent="menu_quota_config"
-            action="action_quota_usage"
+            parent="menu_quota_management"
+            action="action_quota_allocation" 
             sequence="30"/>
 
+  <menuitem id="menu_quota_usage_report"
+            name="Quota Usage"
+            parent="sale.menu_sale_report"
+            action="action_quota_usage" 
+            sequence="10"/>
+
+  <menuitem id="menu_quota_deadline"
+            name="Quota Deadline"
+            parent="sale.menu_sale_config"
+            action="action_quota_deadline"
+            sequence="10"/>
+
+  <menuitem id="menu_customer_quota"
+            name="Customer Quota"
+            parent="sale.menu_sale_config"
+            action="action_customer_quota_usage" 
+            sequence="20"/>
+
+  <menuitem id="menu_customer_quota_usage_report"
+          name="Customer Usage"
+          parent="sale.menu_sale_report"
+          action="action_customer_quota_report"
+          sequence="30"/>
 </odoo>

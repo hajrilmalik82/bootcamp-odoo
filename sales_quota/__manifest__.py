@@ -6,7 +6,8 @@
 'version': '17.0.1.0.0',
 "depends": [
         "sale",
-        "product"
+        "product",
+        "sale_management"
     ],
 "data": [
     "security/ir.model.access.csv",
@@ -14,6 +15,9 @@
     "views/quota_allocation.xml",
     "views/quota_usage.xml",
     "views/product.xml",
+    "views/quota_deadline.xml",
+    "views/customer_quota.xml",
+    "views/customer_quota_report.xml",
     "views/quota_menu.xml",
 ],
 'demo': [],
