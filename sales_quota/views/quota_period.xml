@@ -23,6 +23,11 @@
                             class="oe_highlight" 
                             invisible="state == 'done'"/>
                             
+                    <button name="action_reset"
+                            string="Reset to Draft"
+                            type="object"
+                            invisible="state == 'draft'"/>
+                            
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>

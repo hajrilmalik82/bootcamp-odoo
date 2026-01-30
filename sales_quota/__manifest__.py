@@ -22,6 +22,7 @@
     "views/quota_period.xml",    
     "views/quota_over_limit.xml",
     "views/quota_menu.xml",
+    "views/sale_order_views.xml",
 ],
 'demo': [],
 "installable": True,

@@ -11,9 +11,6 @@
                         <field name="year" class="oe_inline"/> - Month <field name="month" class="oe_inline"/>
                     </div>
                 </group>
-                <p class="text-muted">
-                    Click 'Process' to scan all Sales Orders for this month.
-                </p>
                 <footer>
                     <button name="action_process" string="Process" type="object" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/>

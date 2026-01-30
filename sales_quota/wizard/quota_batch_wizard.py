@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+import calendar
 
 class QuotaBatchWizard(models.TransientModel):
     _name = 'quota.batch.wizard'
@@ -25,26 +26,35 @@ class QuotaBatchWizard(models.TransientModel):
         self.ensure_one()
         period = self.period_id
 
-        prev_month = self.month - 1
-        prev_year = self.year
-        if prev_month == 0:
-            prev_month = 12
-            prev_year = self.year - 1
-
-        prev_period = self.env['quota.period'].search([
-            ('year', '=', prev_year),
-            ('month', '=', prev_month)
-        ], limit=1)
-
-        if prev_period and prev_period.state != 'done':
-            raise UserError(_("Bulan lalu belum selesai."))
+        last_done_period = self.env['quota.period'].search([
+            ('state', '=', 'done')
+        ], order='year desc, month desc', limit=1)
+        if last_done_period:
+            expected_next_year = last_done_period.year
+            expected_next_month = last_done_period.month + 1
+            
+            if expected_next_month > 12:
+                expected_next_month = 1
+                expected_next_year += 1
+            
+            if self.year != expected_next_year or self.month != expected_next_month:
+                raise UserError(_(
+                    "proses harus berurutan\n"
+                    "periode terakhir selesai: %s - Bulan %s.\n"
+                    "proses : %s - Bulan %s dahulu."
+                ) % (last_done_period.year, last_done_period.month, expected_next_year, expected_next_month))
 
         self.env['quota.over.limit'].search([('period_id', '=', period.id)]).unlink()
 
+        day_last = calendar.monthrange(self.year, self.month)[1]
+        
+        date_start = f'{self.year}-{self.month:02d}-01'
+        date_end = f'{self.year}-{self.month:02d}-{day_last}'
+        
         orders = self.env['sale.order'].search([
             ('state', 'in', ['sale', 'done']),
-            ('date_order', '>=', f'{self.year}-{self.month:02d}-01'),
-            ('date_order', '<=', f'{self.year}-{self.month:02d}-31'),
+            ('date_order', '>=', date_start),
+            ('date_order', '<=', date_end),
         ])
         
         usage_map = {} 

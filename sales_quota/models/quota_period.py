@@ -24,3 +24,9 @@ class QuotaPeriod(models.Model):
     def _compute_display_name(self):
         for rec in self:
             rec.display_name = f"{rec.year} - Bulan {rec.month}"
+            
+    def action_reset(self):
+        self.ensure_one()
+        self.state = 'draft'
+        self.processed_at = False
+        

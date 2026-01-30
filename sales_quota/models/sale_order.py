@@ -83,11 +83,12 @@ class SaleOrder(models.Model):
         domain = [
             ('order_id.state', 'in', ['sale', 'done']),
             ('product_id.product_tmpl_id.quota_category_id', '=', category_id),
-            ('order_id.id', '!=', self.id)
         ]
+        if isinstance(self.id, int):
+            domain.append(('order_id.id', '!=', self.id))
         
         if partner_id:
-            domain = domain + [('order_id.partner_id', '=', partner_id)]
+            domain.append('order_id.partner_id', '=', partner_id)
             
         all_lines = self.env['sale.order.line'].search(domain)
         
