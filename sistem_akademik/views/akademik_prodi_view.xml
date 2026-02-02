@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_akademik_prodi_tree" model="ir.ui.view">
+        <field name="name">akademik.prodi.tree</field>
+        <field name="model">akademik.prodi</field>
+        <field name="arch" type="xml">
+            <tree string="Program Studi">
+                <field name="nama_prodi"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_akademik_prodi_form" model="ir.ui.view">
+        <field name="name">akademik.prodi.form</field>
+        <field name="model">akademik.prodi</field>
+        <field name="arch" type="xml">
+            <form string="Program Studi">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="nama_prodi"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_akademik_prodi" model="ir.actions.act_window">
+        <field name="name">Program Studi</field>
+        <field name="res_model">akademik.prodi</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

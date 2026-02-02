@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_mahasiswa_s1" model="ir.ui.view">
+        <field name="name">res.partner.form.mahasiswa.s1</field>
+        <field name="model">res.partner</field>
+        <field name="priority">200</field>
+        <field name="arch" type="xml">
+            <form string="Mahasiswa S1">
+                <header>
+                    <button name="action_generate_nim" string="Generate NIM" type="object" class="oe_highlight" invisible="nim"/>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,aktif,lulus,dropout"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                    
+                    <group>
+                        <group string="Data Identitas">
+                            <field name="name" placeholder="Nama Mahasiswa"/>
+                            <field name="identitas_mahasiswa" invisible="1"/>
+                            <field name="nim" readonly="id != False"/>
+                            <field name="prodi_id"/>
+                            <field name="jenjang" readonly="1"/>
+                        </group>
+                        <group string="Kontak &amp; Kategori">
+                            <field name="email" widget="email"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="tag_mahasiswa" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <field name="level_prestasi" widget="priority"/>
+                            <field name="tahun_masuk"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

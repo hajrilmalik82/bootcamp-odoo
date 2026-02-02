@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_akademik_tahun_tree" model="ir.ui.view">
+        <field name="name">akademik.tahun.tree</field>
+        <field name="model">akademik.tahun</field>
+        <field name="arch" type="xml">
+            <tree string="Tahun Akademik">
+                <field name="tahun_akademik"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_akademik_tahun_form" model="ir.ui.view">
+        <field name="name">akademik.tahun.form</field>
+        <field name="model">akademik.tahun</field>
+        <field name="arch" type="xml">
+            <form string="Tahun Akademik">
+                <sheet>
+                    <group>
+                        <field name="tahun_akademik"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_akademik_tahun" model="ir.actions.act_window">
+        <field name="name">Tahun Akademik</field>
+        <field name="res_model">akademik.tahun</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

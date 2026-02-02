@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_tree_mahasiswa" model="ir.ui.view">
+        <field name="name">res.partner.tree.mahasiswa</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Mahasiswa">
+                <field name="image_128" widget="image"/>
+                <field name="nim"/>
+                <field name="name"/>
+                <field name="prodi_id"/>
+                <field name="tahun_masuk"/>
+                <field name="category_id" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="email" widget="email"/>
+                <field name="phone" widget="phone"/>
+                <field name="level_prestasi" widget="priority"/>
+                <field name="status" widget="badge" decoration-success="status == 'lulus'" decoration-danger="status == 'dropout'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_mahasiswa_list" model="ir.actions.act_window">
+        <field name="name">Mahasiswa</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_partner_tree_mahasiswa"/>
+        <field name="domain">[('identitas_mahasiswa', '=', True)]</field>
+        <field name="context">{'default_identitas_mahasiswa': True, 'tree_view_ref': 'sistem_akademik.view_partner_tree_mahasiswa', 'form_view_ref': 'sistem_akademik.view_partner_form_mahasiswa_s1'}</field>
+    </record>
+
+    <record id="action_mahasiswa_s1_list" model="ir.actions.act_window">
+        <field name="name">Mahasiswa S1</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_partner_tree_mahasiswa"/>
+        <field name="domain">[('identitas_mahasiswa', '=', True), ('jenjang', '=', 's1')]</field>
+        <field name="context">{'default_identitas_mahasiswa': True, 'default_jenjang': 's1', 'tree_view_ref': 'sistem_akademik.view_partner_tree_mahasiswa', 'form_view_ref': 'sistem_akademik.view_partner_form_mahasiswa_s1'}</field>
+    </record>
+</odoo>
