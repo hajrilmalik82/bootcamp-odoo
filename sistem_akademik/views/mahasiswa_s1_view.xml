@@ -20,16 +20,25 @@
                             <field name="identitas_mahasiswa" invisible="1"/>
                             <field name="nim" readonly="id != False"/>
                             <field name="prodi_id"/>
-                            <field name="jenjang" readonly="1"/>
                         </group>
                         <group string="Kontak &amp; Kategori">
                             <field name="email" widget="email"/>
                             <field name="phone" widget="phone"/>
                             <field name="tag_mahasiswa" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                            <field name="level_prestasi" widget="priority"/>
-                            <field name="tahun_masuk"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Data Akademik">
+                            <group>
+                                <field name="jenjang" readonly="1"/>
+                                <field name="level_prestasi" widget="priority"/>
+                                <field name="tahun_masuk"/>
+                            </group>
+                        </page>
+                        <page string="Catatan">
+                            <field name="comment" placeholder="riwayat atau observasi dosen wali"/>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

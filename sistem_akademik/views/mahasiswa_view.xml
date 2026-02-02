@@ -10,7 +10,7 @@
                 <field name="name"/>
                 <field name="prodi_id"/>
                 <field name="tahun_masuk"/>
-                <field name="category_id" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="tag_mahasiswa" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 <field name="email" widget="email"/>
                 <field name="phone" widget="phone"/>
                 <field name="level_prestasi" widget="priority"/>
