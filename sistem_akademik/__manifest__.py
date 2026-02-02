@@ -11,6 +11,7 @@
         'views/akademik_prodi_view.xml',
         'views/mahasiswa_view.xml',
         'views/mahasiswa_s1_view.xml',
+        'views/mahasiswa_pasca_view.xml',
         'views/menu.xml',
     ],
     'installable': True,

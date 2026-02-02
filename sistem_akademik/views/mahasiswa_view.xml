@@ -19,11 +19,38 @@
         </field>
     </record>
 
+    <record id="view_mahasiswa_search" model="ir.ui.view">
+        <field name="name">res.partner.search.mahasiswa</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search string="Pencarian Mahasiswa">
+                <field name="name" string="Nama" filter_domain="['|', '|', ('name', 'ilike', self), ('nim', 'ilike', self), ('email', 'ilike', self)]"/>
+                <field name="nim" string="NIM"/>
+                <field name="email" string="Email"/>
+                
+                <separator/>
+                <filter string="Mahasiswa Aktif" name="filter_aktif" domain="[('status', '=', 'aktif')]"/>
+                <filter string="Lulus" name="filter_lulus" domain="[('status', '=', 'lulus')]"/>
+                <filter string="Drop Out" name="filter_dropout" domain="[('status', '=', 'dropout')]"/>
+                
+                <group expand="0" string="Group By">
+                    <filter string="Program Studi" name="group_prodi" context="{'group_by': 'prodi_id'}"/>
+                    <filter string="Jenjang" name="group_jenjang" context="{'group_by': 'jenjang'}"/>
+                </group>
+                <searchpanel>
+                    <field name="prodi_id" icon="fa-building" enable_counters="1"/>
+                    <field name="status" icon="fa-tags" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
     <record id="action_mahasiswa_list" model="ir.actions.act_window">
         <field name="name">Mahasiswa</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_partner_tree_mahasiswa"/>
+        <field name="search_view_id" ref="view_mahasiswa_search"/>
         <field name="domain">[('identitas_mahasiswa', '=', True)]</field>
         <field name="context">{'default_identitas_mahasiswa': True, 'tree_view_ref': 'sistem_akademik.view_partner_tree_mahasiswa', 'form_view_ref': 'sistem_akademik.view_partner_form_mahasiswa_s1'}</field>
     </record>
@@ -33,7 +60,9 @@
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_partner_tree_mahasiswa"/>
+        <field name="search_view_id" ref="view_mahasiswa_search"/>
         <field name="domain">[('identitas_mahasiswa', '=', True), ('jenjang', '=', 's1')]</field>
-        <field name="context">{'default_identitas_mahasiswa': True, 'default_jenjang': 's1', 'tree_view_ref': 'sistem_akademik.view_partner_tree_mahasiswa', 'form_view_ref': 'sistem_akademik.view_partner_form_mahasiswa_s1'}</field>
+        <field name="context">{'search_default_filter_aktif': 1, 'default_identitas_mahasiswa': True, 'default_jenjang': 's1', 'tree_view_ref': 'sistem_akademik.view_partner_tree_mahasiswa', 'form_view_ref': 'sistem_akademik.view_partner_form_mahasiswa_s1'}</field>
     </record>
+
 </odoo>

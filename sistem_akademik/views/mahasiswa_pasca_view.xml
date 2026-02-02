@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_partner_form_mahasiswa_s1" model="ir.ui.view">
-        <field name="name">res.partner.form.mahasiswa.s1</field>
+    <record id="view_partner_form_mahasiswa_pasca" model="ir.ui.view">
+        <field name="name">res.partner.form.mahasiswa.pasca</field>
         <field name="model">res.partner</field>
         <field name="priority">200</field>
         <field name="arch" type="xml">
-            <form string="Mahasiswa S1">
+            <form string="Mahasiswa Pascasarjana">
                 <header>
                     <button name="action_generate_nim" string="Generate NIM" type="object" class="oe_highlight" invisible="nim"/>
                     <field name="status" widget="statusbar" statusbar_visible="draft,aktif,lulus,dropout" options="{'clickable': '1'}"/>
@@ -24,13 +24,15 @@
                         <group string="Kontak &amp; Kategori">
                             <field name="email" widget="email"/>
                             <field name="phone" widget="phone"/>
-                            <field name="tag_mahasiswa" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <field name="category_id" widget="many2many_tags" options="{'color_field': 'color'}"/>
                         </group>
                     </group>
                     <notebook>
                         <page string="Data Akademik">
                             <group>
                                 <field name="jenjang" readonly="1" force_save="1"/>
+                                <field name="topik_riset" required="1"/>
+                                <field name="dosen_pembimbing_id"/>
                                 <field name="level_prestasi" widget="priority"/>
                                 <field name="tahun_masuk"/>
                             </group>
@@ -42,5 +44,26 @@
                 </sheet>
             </form>
         </field>
+    </record>
+
+    <record id="view_mahasiswa_pasca_search" model="ir.ui.view">
+        <field name="name">res.partner.search.mahasiswa.pasca</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="sistem_akademik.view_mahasiswa_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//searchpanel" position="inside">
+                <field name="dosen_pembimbing_id" icon="fa-user-tie" enable_counters="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_mahasiswa_pasca_list" model="ir.actions.act_window">
+        <field name="name">Mahasiswa Pascasarjana</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_partner_tree_mahasiswa"/>
+        <field name="search_view_id" ref="view_mahasiswa_pasca_search"/>
+        <field name="domain">[('identitas_mahasiswa', '=', True), ('jenjang', '=', 'pasca')]</field>
+        <field name="context">{'search_default_filter_aktif': 1, 'default_identitas_mahasiswa': True, 'default_jenjang': 'pasca', 'tree_view_ref': 'sistem_akademik.view_partner_tree_mahasiswa', 'form_view_ref': 'sistem_akademik.view_partner_form_mahasiswa_pasca'}</field>
     </record>
 </odoo>

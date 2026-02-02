@@ -13,6 +13,12 @@
               action="action_mahasiswa_s1_list"
               sequence="10"/>
 
+    <menuitem id="menu_akademik_mahasiswa_pasca"
+              name="Mahasiswa Pascasarjana"
+              parent="menu_akademik_mahasiswa"
+              action="action_mahasiswa_pasca_list"
+              sequence="20"/>
+
     <menuitem id="menu_akademik_config"
               name="Konfigurasi"
               parent="menu_akademik_root"

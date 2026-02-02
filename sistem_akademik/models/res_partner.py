@@ -20,12 +20,12 @@ class ResPartner(models.Model):
     ], string='Level Prestasi')
     tag_mahasiswa = fields.Many2many(
         'res.partner.category',
-        'student_tag_rel',
-        'partner_id',
-        'category_id',
+        'mahasiswa_tag_rel',
         string='Tag Mahasiswa'
     )
     tahun_masuk = fields.Many2one('akademik.tahun', string='Tahun Masuk')
+    topik_riset = fields.Char(string='Topik Riset')
+    dosen_pembimbing_id = fields.Many2one('res.partner', string='Dosen Pembimbing')
     status = fields.Selection([
         ('draft', 'Draft'),
         ('aktif', 'Aktif'),
@@ -38,3 +38,10 @@ class ResPartner(models.Model):
             if not record.nim:
                 year = datetime.datetime.now().year
                 record.nim = f"{year}{record.id or '0000'}"
+
+    @api.depends('name', 'nim', 'identitas_mahasiswa')
+    def _compute_display_name(self):
+        super(ResPartner, self)._compute_display_name()
+        for record in self:
+            if record.nim:
+                record.display_name = f"[{record.nim}] {record.name}"
