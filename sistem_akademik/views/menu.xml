@@ -22,6 +22,7 @@
     <menuitem id="menu_akademik_config"
               name="Konfigurasi"
               parent="menu_akademik_root"
+              groups="base.group_system"
               sequence="100"/>
 
     <menuitem id="menu_akademik_tahun"

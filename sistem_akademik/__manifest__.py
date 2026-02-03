@@ -4,8 +4,10 @@
     'summary': 'sistem akademik',
     'description': """  sistem akademik  """,
     'author': 'Hajril',
-    'depends': ['base', 'contacts'],
+    'depends': ['base', 'contacts', 'hr'],
     'data': [
+        'security/security.xml',
+        'security/rules.xml',
         'security/ir.model.access.csv',
         'views/akademik_tahun_view.xml',
         'views/akademik_prodi_view.xml',

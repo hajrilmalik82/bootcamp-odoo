@@ -1,0 +1,19 @@
+/* Custom Style for Dosen Form */
+
+/* Highlight the Academic Group */
+.dosen_academic_group {
+    border: 1px solid #714B67;
+    /* Odoo Purple Accent */
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f0f6;
+    /* Light Purple Tint */
+    margin-top: 10px;
+}
+
+/* Optional: Style the Legend/Label of the group if needed */
+.dosen_academic_group>.o_group_col_6>.o_horizontal_separator {
+    color: #714B67;
+    font-weight: bold;
+    text-transform: uppercase;
+}
