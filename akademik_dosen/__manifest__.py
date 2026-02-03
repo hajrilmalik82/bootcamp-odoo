@@ -5,7 +5,6 @@
     'author': 'Hajril',
     'depends': ['base', 'hr', 'sistem_akademik'],
     'data': [
-        'security/rules.xml',
         'views/hr_employee_view.xml',
     ],
     'assets': {

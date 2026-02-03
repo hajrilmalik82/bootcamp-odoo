@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <record id="group_akademik_dosen" model="res.groups">
-        <field name="name">Dosen</field>
-        <field name="category_id" ref="sistem_akademik.module_category_akademik"/>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-    </record>
-</odoo>
