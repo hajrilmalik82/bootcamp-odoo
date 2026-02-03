@@ -1,12 +1,7 @@
 {
-    'name': 'Ekstensi Dosen Akademik',
+    'name': 'Dosen Akademik',
     'version': '1.0',
-    'category': 'Human Resources',
-    'summary': 'Manajemen Dosen dan Integrasi Akademik',
-    'description': """
-        Modul ini memperluas fungsionalitas HR Employee untuk Dosen
-        dan menghubungkannya dengan Sistem Akademik.
-    """,
+    'description': """Modul Keren Dosen""",
     'author': 'Hajril',
     'depends': ['base', 'hr', 'sistem_akademik'],
     'data': [
@@ -14,5 +9,4 @@
     ],
     'installable': True,
     'application': False,
-    'auto_install': False,
 }
