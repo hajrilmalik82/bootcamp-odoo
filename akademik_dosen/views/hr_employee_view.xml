@@ -18,7 +18,8 @@
                         string="Generate User" 
                         type="object" 
                         class="oe_highlight" 
-                        invisible="user_id != False or not is_dosen"/>
+                        invisible="user_id != False or not is_dosen"
+                        groups="akademik_dosen.group_akademik_officer"/>
             </xpath>
 
             <xpath expr="//field[@name='coach_id']" position="after">

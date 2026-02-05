@@ -1,0 +1,13 @@
+{
+    'name': 'Akademik Tesis',
+    'version': '17.0.1.0.0',
+    'author': 'Hajril',
+    'depends': ['base', 'sistem_akademik', 'akademik_dosen'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/tesis_view.xml',
+        'views/menu.xml',
+    ],
+    'installable': True,
+    'application': True,
+}

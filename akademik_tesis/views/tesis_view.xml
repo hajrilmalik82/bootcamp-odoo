@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_akademik_tesis_kanban" model="ir.ui.view">
+        <field name="name">akademik.tesis.kanban</field>
+        <field name="model">akademik.tesis</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="tahapan" on_create="quick_create" quick_create_view="akademik_tesis.view_akademik_tesis_kanban_quick_create">
+                <progressbar field="progress_kategori" colors='{"high": "success", "medium": "warning", "low": "danger"}'/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_record_top">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <div>
+                                    <field name="mahasiswa_id" widget="res_partner_many2one" options="{'no_open': True}"/>
+                                </div>
+                                <div t-if="record.pembimbing_id.value">
+                                    <span>Pembimbing: </span>
+                                        <field name="pembimbing_id"/>
+                                </div>
+                            </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        <field name="progress" widget="progressbar"/>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                    <field name="mahasiswa_id" widget="many2one_avatar_user"/>                            
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="view_akademik_tesis_kanban_quick_create" model="ir.ui.view">
+        <field name="name">akademik.tesis.kanban.quick.create</field>
+        <field name="model">akademik.tesis</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="mahasiswa_id"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_akademik_tesis_tree" model="ir.ui.view">
+        <field name="name">akademik.tesis.tree</field>
+        <field name="model">akademik.tesis</field>
+        <field name="arch" type="xml">
+            <tree string="Tesis">
+                <field name="name"/>
+                <field name="mahasiswa_id"/>
+                <field name="pembimbing_id"/>
+                <field name="tahapan" widget="badge"/>
+                <field name="progress" widget="progressbar"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_akademik_tesis_form" model="ir.ui.view">
+        <field name="name">akademik.tesis.form</field>
+        <field name="model">akademik.tesis</field>
+        <field name="arch" type="xml">
+            <form string="Tesis">
+                <header>
+                    <field name="tahapan" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Judul Tesis"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="mahasiswa_id"/>
+                            <field name="tanggal_pengajuan"/>
+                            <field name="progress"/>
+                        </group>
+                        <group>
+                            <field name="pembimbing_id"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="o_attachment_preview" options="{'types':['image', 'pdf'], 'order':'desc'}"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_akademik_tesis_graph" model="ir.ui.view">
+        <field name="name">akademik.tesis.graph</field>
+        <field name="model">akademik.tesis</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="tahapan"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_akademik_tesis" model="ir.actions.act_window">
+        <field name="name">Tesis</field>
+        <field name="res_model">akademik.tesis</field>
+        <field name="view_mode">kanban,tree,form,graph</field>
+    </record>
+</odoo>
