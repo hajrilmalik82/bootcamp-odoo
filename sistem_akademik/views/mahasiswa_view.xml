@@ -100,7 +100,7 @@
                             <group>
                                 <field name="jenjang" readonly="1" force_save="1"/>
                                 <field name="topik_riset" invisible="jenjang != 'pasca'" required="jenjang == 'pasca'"/>
-                                <field name="dosen_pembimbing_id" invisible="jenjang != 'pasca'"/>
+                                <field name="dosen_pembimbing_id" invisible="jenjang != 'pasca'" readonly="1"/>
                                 <field name="level_prestasi" widget="priority"/>
                                 <field name="tahun_masuk"/>
                             </group>

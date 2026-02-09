@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <menuitem id="menu_akademik_tesis"
-              name="Tesis"
+              name="Thesis"
               parent="sistem_akademik.menu_akademik_root"
               action="action_akademik_tesis"
               sequence="30"/>
