@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_akademik_krs_wizard_form" model="ir.ui.view">
+        <field name="name">akademik.krs.wizard.form</field>
+        <field name="model">akademik.krs.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate KRS (Mass)">
+                <group>
+                    <group>
+                        <field name="academic_year_id"/>
+                        <field name="entry_year_id"/>
+                    </group>
+                    <group>
+                        <field name="semester"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="process_krs" string="Generate KRS" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_akademik_krs_wizard" model="ir.actions.act_window">
+        <field name="name">Generate KRS</field>
+        <field name="res_model">akademik.krs.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

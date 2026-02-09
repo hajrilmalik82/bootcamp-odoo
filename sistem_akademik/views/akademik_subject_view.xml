@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_akademik_subject_tree" model="ir.ui.view">
+        <field name="name">akademik.subject.tree</field>
+        <field name="model">akademik.subject</field>
+        <field name="arch" type="xml">
+            <tree string="Subjects">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="credits"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_akademik_subject_form" model="ir.ui.view">
+        <field name="name">akademik.subject.form</field>
+        <field name="model">akademik.subject</field>
+        <field name="arch" type="xml">
+            <form string="Subject">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="credits"/>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_akademik_subject" model="ir.actions.act_window">
+        <field name="name">Subjects</field>
+        <field name="res_model">akademik.subject</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

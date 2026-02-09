@@ -7,3 +7,4 @@ access_akademik_tahun_dosen,akademik.tahun dosen,sistem_akademik.model_akademik_
 access_akademik_tahun_officer,akademik.tahun officer,sistem_akademik.model_akademik_tahun,group_akademik_officer,1,1,1,1
 access_hr_employee_dosen,hr.employee dosen,hr.model_hr_employee,group_akademik_dosen,1,0,0,0
 access_hr_employee_officer,hr.employee officer,hr.model_hr_employee,group_akademik_officer,1,1,1,1
+access_res_users_officer,res.users.officer,base.model_res_users,akademik_dosen.group_akademik_officer,1,1,1,0

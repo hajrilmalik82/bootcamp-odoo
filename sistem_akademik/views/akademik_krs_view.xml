@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_akademik_krs_tree" model="ir.ui.view">
+        <field name="name">akademik.krs.tree</field>
+        <field name="model">akademik.krs</field>
+        <field name="arch" type="xml">
+            <tree string="KRS">
+                <field name="student_id"/>
+                <field name="prodi_id"/>
+                <field name="academic_year_id"/>
+                <field name="semester"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_akademik_krs_form" model="ir.ui.view">
+        <field name="name">akademik.krs.form</field>
+        <field name="model">akademik.krs</field>
+        <field name="arch" type="xml">
+            <form string="KRS">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="academic_year_id"/>
+                        </group>
+                        <group>
+                            <field name="semester"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Study Plan Details">
+                            <field name="line_ids">
+                                <tree editable="bottom">
+                                    <field name="subject_id"/>
+                                    <field name="credits" sum="Total SKS"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_akademik_krs" model="ir.actions.act_window">
+        <field name="name">KRS</field>
+        <field name="res_model">akademik.krs</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
