@@ -19,9 +19,9 @@ class HrEmployee(models.Model):
                 'name': employee.name,
                 'login': employee.work_email,
                 'email': employee.work_email,
-                'groups_id': [(6, 0, [self.env.ref('base.group_user').id])]
+                'groups_id': [(6, 0, [self.env.ref('base.group_user').id, self.env.ref('sistem_akademik.group_akademik_dosen').id])]
             }
-            user = self.env['res.users'].create(user_vals)
-            employee.user_id = user.id
+            user = self.env['res.users'].sudo().create(user_vals)
+            employee.sudo().user_id = user.id
     
 
