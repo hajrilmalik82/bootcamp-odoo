@@ -10,6 +10,7 @@ class AkademikThesis(models.Model):
     title = fields.Char(string='Thesis Title', required=True)
     student_id = fields.Many2one('res.partner', string='Student', domain="[('identitas_mahasiswa', '=', True), ('krs_ids.line_ids.subject_id.name', 'ilike', 'Tesis')]", required=True)
     supervisor_id = fields.Many2one('hr.employee', string='Supervisor', domain="[('is_dosen', '=', True)]")
+    supervisor_user_id = fields.Many2one('res.users', related='supervisor_id.user_id', string='Supervisor User', store=True)
     submission_date = fields.Date(string='Submission Date', default=fields.Date.today)
     note = fields.Text(string='Note')
     progress = fields.Integer(string='Progress Percentage')
@@ -25,7 +26,6 @@ class AkademikThesis(models.Model):
         ('D', 'D'),
         ('E', 'E')
     ], string='Final Grade', readonly=True)
-    supervisor_user_id = fields.Many2one('res.users', related='supervisor_id.user_id', string='Supervisor User', store=True)
     progress_category = fields.Selection([
         ('low', 'Low (0-49%)'),
         ('medium', 'Medium (50-99%)'),
