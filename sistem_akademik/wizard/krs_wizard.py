@@ -19,8 +19,6 @@ class KrsWizard(models.TransientModel):
     ], string='Target Semester', required=True)
 
     def process_krs(self):
-        self.ensure_one()
-        
         students = self.env['res.partner'].search([
             ('identitas_mahasiswa', '=', True),
             ('entry_year_id', '=', self.entry_year_id.id),

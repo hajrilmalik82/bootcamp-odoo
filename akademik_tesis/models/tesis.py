@@ -109,7 +109,7 @@ class AkademikThesis(models.Model):
             if unscored:
                 raise models.ValidationError("All examiners must input a score (greater than 0) before approval.")
 
-            record.sudo().stage = 'graduation'
+            record.stage = 'graduation'
 
     def action_process_graduation(self):
         for record in self:
@@ -134,10 +134,9 @@ class AkademikThesis(models.Model):
                 ('subject_id.name', 'ilike', 'Tesis')
             ], limit=1)
             if krs_line:
-                krs_line.sudo().grade = grade
-            else:
-                raise models.ValidationError("Tesis subject not found in student's KRS. Please ensure the student is enrolled in Tesis subject.")
-            record.student_id.sudo().status = 'graduated'
+                krs_line.grade = grade
+        
+            record.student_id.status = 'graduated'
             record.completion_date = record.defense_schedule.date()
             record.stage = 'done'
 
